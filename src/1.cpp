@@ -7,8 +7,8 @@
 int solve2(std::vector<int> &entries)
 {
     size_t entries_size = entries.size();
-    for (int i = 0; i < entries_size; i++)
-        for (int j = 1; j < entries_size; j++)
+    for (size_t i = 0; i < entries_size; i++)
+        for (size_t j = 1; j < entries_size; j++)
             if (entries[i] + entries[j] == 2020)
                 return entries[i] * entries[j];
     return -1;
@@ -17,9 +17,9 @@ int solve2(std::vector<int> &entries)
 int solve3(std::vector<int> &entries)
 {
     size_t entries_size = entries.size();
-    for (auto x = 0; x < entries_size; x++)
-        for (auto y = 1; y < entries_size; y++)
-            for (auto z = 2; z < entries_size; z++)
+    for (size_t x = 0; x < entries_size; x++)
+        for (size_t y = 1; y < entries_size; y++)
+            for (size_t z = 2; z < entries_size; z++)
                 if (entries[x] + entries[y] + entries[z] == 2020)
                     return entries[x] * entries[y] * entries[z];
     return -1;
