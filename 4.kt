@@ -96,7 +96,7 @@ fun main() {
     val lines: List<String> = inp.split("\n").map{ it.trim() }
     val passports: MutableList<String> = mutableListOf()
     var passport_str: String = ""
-    var valid_passports: Int = 0;
+    var valid_passports: Int = 0
 
     for (line in lines)
     {
