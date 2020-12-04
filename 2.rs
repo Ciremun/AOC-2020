@@ -101,7 +101,7 @@ fn main() -> std::io::Result<()>
     file.read_to_string(&mut contents)?;
     let part1: u16 = count_valid_passwords(&contents, 1);
     let part2: u16 = count_valid_passwords(&contents, 2);
-    println!("part1: {} valid_passwords", part1);
-    println!("part1: {} valid_passwords", part2);
+    println!("part1: {} valid passwords", part1);
+    println!("part2: {} valid passwords", part2);
     Ok(())
 }
