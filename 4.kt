@@ -37,8 +37,8 @@ fun is_valid_hex_char(c: String): Boolean
 
 fun is_valid_field_hair(pd_value: String): Boolean
 {
-    val pd_hash = pd_value.substring(0, 1)
-    val pd_values = pd_value.substring(1, 7)
+    val pd_hash: String = pd_value.substring(0, 1)
+    val pd_values: String = pd_value.substring(1, 7)
     if (pd_hash == "#" && pd_values.length == 6 && pd_values.all{ is_valid_hex_char(it.toString()) })
         return true
     return false
