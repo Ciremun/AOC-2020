@@ -24,14 +24,9 @@ fun is_valid_hex_char(c: String): Boolean
 {
     val c_int: Int? = c.toIntOrNull()
     if (c_int is Int)
-    {
         return 0 <= c_int && c_int <= 9
-    }
     else
-    {
-        val valid_hex_chars: List<String> = listOf("a", "b", "c", "d", "e", "f")
-        return valid_hex_chars.contains(c)
-    }
+        return listOf("a", "b", "c", "d", "e", "f").contains(c)
 }
 
 
@@ -90,9 +85,7 @@ fun is_valid_passport(pd: MutableMap<String, String>): Boolean
                 return false
         }
         else
-        {
             return false
-        }
     }
     return true
 }
