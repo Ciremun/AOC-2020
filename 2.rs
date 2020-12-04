@@ -3,6 +3,8 @@ use std::io::prelude::*;
 
 // How many passwords are valid?
 
+// input.txt:
+
 // 1-3 a: abcde
 // 1-3 b: cdefg
 // 2-9 c: ccccccccc
@@ -10,7 +12,7 @@ use std::io::prelude::*;
 // pt.1 valid_passwords: 2
 // pt.2 valid_passwords: 1
 
-fn count_matches(passwords: String) -> u16
+fn count_valid_passwords(passwords: &String, puzzle_part: u8) -> u16
 {
     let lines = passwords.lines();
     let mut valid_passwords: u16 = 0;
@@ -28,7 +30,6 @@ fn count_matches(passwords: String) -> u16
         let mut found_from = false;
         let mut found_to = false;
         let mut found_letter = false;
-        let found_password = false;
 
         for c in line.chars()
         {
@@ -57,45 +58,37 @@ fn count_matches(passwords: String) -> u16
                 letter = c.to_string();
                 found_letter = true;
             }
-            else if found_from && found_to && found_letter && !found_password && c.is_alphabetic()
+            else if found_from && found_to && found_letter && c.is_alphabetic()
             {
                 password.push(c);
             }
         }
         
-        // pt.1
-        // let mut occurrences = 0;
-
-        // for c in password.chars()
-        // {
-        //     if c.to_string() == letter
-        //     {
-        //         occurrences += 1;
-        //     }
-        // }
-
-        // if from <= occurrences && occurrences <= to
-        // {
-        //     valid_passwords += 1;
-        // }
-
-        // pt.2
-        let mut first_pos: bool = false;
-        let mut second_pos: bool = false;
-
-        if password.chars().nth((from - 1).into()).unwrap() == letter.chars().nth(0).unwrap()
+        if puzzle_part == 1
         {
-            first_pos = true;
+            let mut occurrences = 0;
+
+            for c in password.chars()
+            {
+                if c.to_string() == letter
+                {
+                    occurrences += 1;
+                }
+            }
+            if from <= occurrences && occurrences <= to
+            {
+                valid_passwords += 1;
+            }
         }
-
-        if password.chars().nth((to - 1).into()).unwrap() == letter.chars().nth(0).unwrap()
+        else if puzzle_part == 2
         {
-            second_pos = true;
-        }
+            let first_pos: bool = password.chars().nth((from - 1).into()).unwrap() == letter.chars().nth(0).unwrap();
+            let second_pos: bool = password.chars().nth((to - 1).into()).unwrap() == letter.chars().nth(0).unwrap();
 
-        if  (first_pos && !second_pos) || (second_pos && !first_pos)
-        {
-            valid_passwords += 1;
+            if  (first_pos && !second_pos) || (second_pos && !first_pos)
+            {
+                valid_passwords += 1;
+            }
         }
     }
     return valid_passwords;
@@ -106,7 +99,9 @@ fn main() -> std::io::Result<()>
     let mut file = File::open("input.txt")?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
-    let valid_passwords: u16 = count_matches(contents);
-    println!("valid_passwords: {}", valid_passwords);
+    let part1: u16 = count_valid_passwords(&contents, 1);
+    let part2: u16 = count_valid_passwords(&contents, 2);
+    println!("part1: {} valid_passwords", part1);
+    println!("part1: {} valid_passwords", part2);
     Ok(())
 }
