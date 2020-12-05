@@ -2,24 +2,6 @@ import java.io.File
 
 // detecting which passports have all required fields
 
-// input.txt:
-
-// pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
-// hcl:#623a2f
-
-// eyr:2029 ecl:blu cid:129 byr:1989
-// iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm
-
-// hcl:#888785
-// hgt:164cm byr:2001 iyr:2015 cid:88
-// pid:545766238 ecl:hzl
-// eyr:2022
-
-// iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
-
-// Valid Passports: 4
-
-
 fun is_valid_hex_char(c: String): Boolean
 {
     val c_int: Int? = c.toIntOrNull()
@@ -28,7 +10,6 @@ fun is_valid_hex_char(c: String): Boolean
     else
         return listOf("a", "b", "c", "d", "e", "f").contains(c)
 }
-
 
 fun is_valid_field_hair(pd_value: String): Boolean
 {
@@ -39,7 +20,6 @@ fun is_valid_field_hair(pd_value: String): Boolean
     return false
 }
 
-
 fun is_valid_field_height(pd_value: String): Boolean
 {
     if (pd_value.endsWith("cm") && is_valid_field_range(pd_value.substring(0, 3), 150, 193))
@@ -49,7 +29,6 @@ fun is_valid_field_height(pd_value: String): Boolean
     return false
 }
 
-
 fun is_valid_field_range(pd_value: String, x: Int, y: Int): Boolean
 {
     val pd_int: Int? = pd_value.toIntOrNull()
@@ -57,7 +36,6 @@ fun is_valid_field_range(pd_value: String, x: Int, y: Int): Boolean
         return false
     return true
 }
-
 
 fun is_valid_passport(pd: MutableMap<String, String>): Boolean
 {
@@ -89,7 +67,6 @@ fun is_valid_passport(pd: MutableMap<String, String>): Boolean
     }
     return true
 }
-
 
 fun main() {
     val inp: String = File("input.txt").readText() + "\n"

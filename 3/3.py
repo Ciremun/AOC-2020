@@ -2,24 +2,6 @@ from typing import List, Iterable
 
 # how many trees would you encounter?
 
-# input.txt:
-
-# ..##.........##.........##.........##.........##.........##.......
-# #...#...#..#...#...#..#...#...#..#...#...#..#...#...#..#...#...#..
-# .#....#..#..#....#..#..#....#..#..#....#..#..#....#..#..#....#..#.
-# ..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#..#.#...#.#
-# .#...##..#..#...##..#..#...##..#..#...##..#..#...##..#..#...##..#.
-# ..#.##.......#.##.......#.##.......#.##.......#.##.......#.##.....
-# .#.#.#....#.#.#.#....#.#.#.#....#.#.#.#....#.#.#.#....#.#.#.#....#
-# .#........#.#........#.#........#.#........#.#........#.#........#
-# #.##...#...#.##...#...#.##...#...#.##...#...#.##...#...#.##...#...
-# #...##....##...##....##...##....##...##....##...##....##...##....#
-# .#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#.#..#...#.#
-
-# pt.1: 7 trees encountered
-# pt.2 336 trees multiplied together, 2, 7, 3, 4, 2 trees encountered
-
-
 def get_trees(patterns: List[str], *, right: int, down=1) -> int:
     down -= 1
     cursor_pos = 0
@@ -38,13 +20,11 @@ def get_trees(patterns: List[str], *, right: int, down=1) -> int:
             skip = down
     return trees_count
 
-
 def multiply(iterable: Iterable):
     prod = 1
     for x in iterable:
         prod *= x
     return prod
-
 
 def main():
     inp = open('input.txt').read()
@@ -55,7 +35,6 @@ def main():
     trees = [get_trees(lines, right=args[0], down=args[1])
              for args in pt2_args]
     print(f'pt.2: {multiply(trees)} trees multiplied together, {", ".join(str(x) for x in trees)} trees encountered')
-
 
 if __name__ == '__main__':
     main()

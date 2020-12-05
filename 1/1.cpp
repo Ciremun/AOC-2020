@@ -4,18 +4,6 @@
 
 // find entries that sum to 2020, multiply them together
 
-// input.txt:
-
-// 1721
-// 979
-// 366
-// 299
-// 675
-// 1456
-
-// solve2: 514579
-// solve3: 241861950
-
 int solve2(std::vector<int> &entries)
 {
     size_t entries_size = entries.size();

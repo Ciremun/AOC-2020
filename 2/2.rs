@@ -3,15 +3,6 @@ use std::io::prelude::*;
 
 // How many passwords are valid?
 
-// input.txt:
-
-// 1-3 a: abcde
-// 1-3 b: cdefg
-// 2-9 c: ccccccccc
-
-// pt.1 valid_passwords: 2
-// pt.2 valid_passwords: 1
-
 fn count_valid_passwords(passwords: &String, puzzle_part: u8) -> u16
 {
     let lines = passwords.lines();
