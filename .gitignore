@@ -1,9 +1,9 @@
 .vscode/
-5/.bsp/
-5/project/
-5/target
-5/build.properties
-5/build.sbt
+.bsp/
+project/
+target/
+build.properties
+build.sbt
 *.exe
 *.pdb
 *.jar
