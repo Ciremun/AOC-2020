@@ -7,3 +7,5 @@ build.sbt
 *.exe
 *.pdb
 *.jar
+*.o
+*.hi
