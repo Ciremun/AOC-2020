@@ -20,10 +20,7 @@ proc parseBags(lines: seq[string], bags: var Table[string, Table[string, int]]) 
 
 proc countShiny(bags: var Table[string, Table[string, int]], checkBag: string,
                 isShiny: var Table[string, bool], current: var string) =
-    let bag = bags[checkBag]
-    if bag.len == 0:
-        return
-    for name, bagContents in bag:
+    for name, bagContents in bags[checkBag]:
         if name == "shinygold":
             isShiny[current] = true
         countShiny(bags, name, isShiny, current)
@@ -40,7 +37,27 @@ proc solvePt1(bags: var Table[string, Table[string, int]]) =
             inc(pt1)
     echo "pt.1: ", pt1
 
-let lines = readFile("input.txt").splitLines()
+proc sum(bag: Table[string, int]): int =
+    var total = 1
+    for count in bag.values:
+        total += count
+    return total
+
+proc countBags(bags: var Table[string, Table[string, int]], checkBag: string): Table[string, int] =
+    var bagsInside = initTable[string, int]()
+    for name, count in bags[checkBag]:
+        bagsInside[name] = count * sum(countBags(bags, name))
+    return bagsInside
+
+proc solvePt2(bags: var Table[string, Table[string, int]]) =
+    let bagsInside = countBags(bags, "shinygold")
+    echo "pt.2: ", sum(bagsInside) - 1
+
+let linesP1 = readFile("p1.txt").splitLines()
+let linesP2 = readFile("p2.txt").splitLines()
 var bags = initTable[string, Table[string, int]]()
-parseBags(lines, bags)
+parseBags(linesP1, bags)
 solvePt1(bags)
+clear(bags)
+parseBags(linesP2, bags)
+solvePt2(bags)
