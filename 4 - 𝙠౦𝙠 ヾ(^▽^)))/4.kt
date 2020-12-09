@@ -2,16 +2,14 @@ import java.io.File
 
 // detecting which passports have all required fields
 
-fun is_valid_hex_char(c: String): Boolean
-{
+fun is_valid_hex_char(c: String): Boolean {
     val c_int: Int? = c.toIntOrNull()
     if (c_int is Int)
         return 0 <= c_int && c_int <= 9
     return listOf("a", "b", "c", "d", "e", "f").contains(c)
 }
 
-fun is_valid_field_hair(pd_value: String): Boolean
-{
+fun is_valid_field_hair(pd_value: String): Boolean {
     val pd_hash: String = pd_value.substring(0, 1)
     val pd_values: String = pd_value.substring(1, 7)
     if (pd_hash == "#" && pd_values.length == 6 && pd_values.all{ is_valid_hex_char(it.toString()) })
@@ -19,8 +17,7 @@ fun is_valid_field_hair(pd_value: String): Boolean
     return false
 }
 
-fun is_valid_field_height(pd_value: String): Boolean
-{
+fun is_valid_field_height(pd_value: String): Boolean {
     if (pd_value.endsWith("cm") && is_valid_field_range(pd_value.substring(0, 3), 150, 193))
         return true
     if (pd_value.endsWith("in") && is_valid_field_range(pd_value.substring(0, 2), 59, 76))
@@ -28,8 +25,7 @@ fun is_valid_field_height(pd_value: String): Boolean
     return false
 }
 
-fun is_valid_field_range(pd_value: String, x: Int, y: Int): Boolean
-{
+fun is_valid_field_range(pd_value: String, x: Int, y: Int): Boolean {
     val pd_int: Int? = pd_value.toIntOrNull()
     return pd_int is Int && (x <= pd_int && pd_int <= y)
 }
