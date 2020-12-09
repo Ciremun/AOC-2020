@@ -25,13 +25,52 @@ int parse_value(char l[MAX_LINES][MAX_LINE_LEN], int i)
 
 void solve(char l[MAX_LINES][MAX_LINE_LEN], int lcount)
 {
+    char init[MAX_LINES][MAX_LINE_LEN];
+    memcpy(init, l, sizeof(char) * MAX_LINES * MAX_LINE_LEN);
     bool seen[MAX_LINES] = {};
+    bool fix_tried[MAX_LINES] = {};
+    bool solved1 = false;
     for (long i = 0; i < lcount; i++)
     {
-        if (seen[i] == true)
+        if (seen[i])
         {
-            printf("pt.1: accumulator: %d", accumulator);
-            break;
+            if (!solved1)
+            {
+                printf("pt.1: accumulator: %d\n", accumulator);
+                solved1 = true;
+            }
+            memset(l, 0, sizeof(char) * MAX_LINES * MAX_LINE_LEN);
+            memcpy(l, init, sizeof(char) * MAX_LINES * MAX_LINE_LEN);
+            accumulator = 0;
+            for (long j = 0; j < MAX_LINES; j++)
+            {
+                seen[j] = false;
+            }
+            for (long z = 0; z < lcount; z++)
+            {
+                if (fix_tried[z])
+                {
+                    continue;
+                }
+                char op[4] = {l[z][0], l[z][1], l[z][2], '\0'};
+                if (strcmp(op, "nop") == 0)
+                {
+                    l[z][0] = 'j';
+                    l[z][1] = 'm';
+                    l[z][2] = 'p';
+                    fix_tried[z] = true;
+                    break;
+                }
+                else if (strcmp(op, "jmp") == 0)
+                {
+                    l[z][0] = 'n';
+                    l[z][1] = 'o';
+                    l[z][2] = 'p';
+                    fix_tried[z] = true;
+                    break;
+                }
+            }
+            i = 0;
         }
         seen[i] = true;
         char op[4] = {l[i][0], l[i][1], l[i][2], '\0'};
@@ -67,6 +106,7 @@ void solve(char l[MAX_LINES][MAX_LINE_LEN], int lcount)
             }
         }
     }
+    printf("pt.2: accumulator: %d\n", accumulator);
 }
 
 int read_file(char l[MAX_LINES][MAX_LINE_LEN])
@@ -77,7 +117,7 @@ int read_file(char l[MAX_LINES][MAX_LINE_LEN])
     {
         i++;
     }
-    l[i-1][6] = '\n';
+    l[i - 1][6] = '\n';
     fclose(fp);
     return i;
 }
