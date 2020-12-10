@@ -2,6 +2,7 @@
 .bsp/
 project/
 target/
+node_modules/
 build.properties
 build.sbt
 *.exe
