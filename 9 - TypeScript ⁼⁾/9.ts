@@ -15,8 +15,21 @@ interface PreambleData {
 
 let sum = (x: number, y: number): number => { return x + y; };
 let ascend = (x: number, y: number): number => { return x - y; };
-let getPreambleNums = (numbers: number[], preamble: number): number[] =>
-    { return numbers.slice(0, preamble).sort(ascend); }
+let getPreambleNums = (numbers: number[], preamble: number): number[] => { return numbers.slice(0, preamble).sort(ascend); }
+
+function encryptionWeakness(badNum: number, numbers: number[]): number {
+    numbers = numbers.filter(x => x < badNum);
+    for (let i = 0; i < numbers.length; i++)
+        for (let j = i + 1; j < numbers.length; j++) {
+            let cSet = numbers.slice(i, j);
+            let cSetSum: number = cSet.reduce(sum, 0);
+            if (cSetSum === badNum) {
+                cSet.sort(ascend);
+                return cSet[0] + cSet[cSet.length - 1];
+            }
+        }
+    return 0;
+}
 
 function validNum(num: number, d: PreambleData) {
     if (d.min <= num && num <= d.max) {
@@ -58,7 +71,9 @@ function solve(input: string, preamble: number) {
     let min: number = minMax.min;
     let max: number = minMax.max;
     let pt1: number = firstBadNum({ min, max, preamble, preambleNums, numbers });
-    console.log(pt1);
+    console.log(`pt.1: ${pt1}`);
+    let pt2: number = encryptionWeakness(pt1, numbers);
+    console.log(`pt.2: ${pt2}`);
 }
 const file = readFileSync('input.txt', 'utf-8');
 solve(file, 25);
