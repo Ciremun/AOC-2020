@@ -14,3 +14,4 @@
 ## Run
 
     tsc 9.ts
+    node 9.js
