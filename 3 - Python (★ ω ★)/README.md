@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-[Python>=3.6](https://www.python.org/)
+[Python>=3.6](https://www.python.org/)  
 
 ## Run
 

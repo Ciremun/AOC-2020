@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-[Rust](https://www.rust-lang.org/)
+[Rust](https://www.rust-lang.org/)  
 
 ## Run
 
