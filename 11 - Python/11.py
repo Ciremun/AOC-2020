@@ -94,3 +94,4 @@ def solve1():
 
 
 solve1()
+# i dont understand pt.2
