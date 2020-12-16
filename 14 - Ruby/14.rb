@@ -2,7 +2,6 @@ $lines = IO.readlines('input.txt')
 
 def possible_bin_combinations(length)
     combinations = []
-    start = 0
     for i in 0..2**length - 1 do
         combination = i.to_s(2)
         if combination.length < length
