@@ -1,7 +1,5 @@
 import java.io.File
 
-// detecting which passports have all required fields
-
 fun is_valid_hex_char(c: String): Boolean {
     val c_int: Int? = c.toIntOrNull()
     if (c_int is Int)

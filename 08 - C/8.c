@@ -36,7 +36,7 @@ void solve(char l[MAX_LINES][MAX_LINE_LEN], int lcount)
         {
             if (!solved1)
             {
-                printf("pt.1: accumulator: %d\n", accumulator);
+                printf("pt.1: %d\n", accumulator);
                 solved1 = true;
             }
             memset(l, 0, sizeof(char) * MAX_LINES * MAX_LINE_LEN);
@@ -106,7 +106,7 @@ void solve(char l[MAX_LINES][MAX_LINE_LEN], int lcount)
             }
         }
     }
-    printf("pt.2: accumulator: %d\n", accumulator);
+    printf("pt.2: %d\n", accumulator);
 }
 
 int read_file(char l[MAX_LINES][MAX_LINE_LEN])

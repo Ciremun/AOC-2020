@@ -1,8 +1,6 @@
 use std::fs::File;
 use std::io::prelude::*;
 
-// How many passwords are valid?
-
 fn count_valid_passwords(passwords: &String) -> (u16, u16)
 {
     let lines = passwords.lines();

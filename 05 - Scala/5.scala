@@ -1,9 +1,6 @@
 import util.control.Breaks._
 import scala.collection.mutable.ListBuffer
 
-// What is the highest seat ID on a boarding pass?
-// What is the ID of your seat?
-
 object Main extends App
 {
    def getSeatIDs(input: List[String]): ListBuffer[Int] = {

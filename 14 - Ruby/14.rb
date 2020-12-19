@@ -86,7 +86,7 @@ def part_1(mask, mem, mem_pos, mem_val)
     mem[mem_pos] = apply_mask_p1(mask, mem_val_bin)
 end
 
-def solve_part(part)
+def solve_part(part, out)
     mem = {}
     mask = ""
     $lines.each do |line|
@@ -97,8 +97,8 @@ def solve_part(part)
             part.call(mask, mem, mem_pos, mem_val)
         end
     end
-    puts mem_sum(mem)
+    puts "#{out}: #{mem_sum(mem)}"
 end
 
-solve_part(method(:part_1))
-solve_part(method(:part_2))
+solve_part(method(:part_1), "pt.1")
+solve_part(method(:part_2), "pt.2")

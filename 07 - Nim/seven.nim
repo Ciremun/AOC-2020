@@ -53,11 +53,10 @@ proc solvePt2(bags: var Table[string, Table[string, int]]) =
     let bagsInside = countBags(bags, "shinygold")
     echo "pt.2: ", sum(bagsInside) - 1
 
-let linesP1 = readFile("p1.txt").splitLines()
-let linesP2 = readFile("p2.txt").splitLines()
+let lines = readFile("input.txt").splitLines()
 var bags = initTable[string, Table[string, int]]()
-parseBags(linesP1, bags)
+parseBags(lines, bags)
 solvePt1(bags)
 clear(bags)
-parseBags(linesP2, bags)
+parseBags(lines, bags)
 solvePt2(bags)

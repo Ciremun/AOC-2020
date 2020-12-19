@@ -86,12 +86,10 @@ def solve1():
         start = loop_rows(start)
     occupied = 0
     for line in start:
-        print(line)
         for seat in line:
             if seat == '#':
                 occupied += 1
-    print(occupied)
+    print(f'pt.1: {occupied}')
 
 
 solve1()
-# i dont understand pt.2

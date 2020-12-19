@@ -2,9 +2,7 @@
 #include <iostream>
 #include <vector>
 
-// find entries that sum to 2020, multiply them together
-
-int solve2(std::vector<int> &entries)
+int part1(std::vector<int> &entries)
 {
     size_t entries_size = entries.size();
     for (size_t i = 0; i < entries_size; i++)
@@ -14,7 +12,7 @@ int solve2(std::vector<int> &entries)
     return -1;
 }
 
-int solve3(std::vector<int> &entries)
+int part2(std::vector<int> &entries)
 {
     size_t entries_size = entries.size();
     for (size_t x = 0; x < entries_size; x++)
@@ -40,7 +38,6 @@ int main()
     int x;
     while (infile >> x)
         entries.push_back(x);
-    print_result(solve2(entries), "solve2");
-    print_result(solve3(entries), "solve3");
-    std::cin.get();
+    print_result(part1(entries), "pt.1");
+    print_result(part2(entries), "pt.2");
 }

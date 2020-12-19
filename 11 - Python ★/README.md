@@ -2,7 +2,15 @@
 
 ## Dependencies
 
-[Python 3](https://www.python.org/)  
+[Python>=3.6](https://www.python.org/)  
+
+## Version
+
+    Python 3.9.1
+
+## Result
+
+    pt.1: 2319
 
 ## Run
 
