@@ -2,7 +2,6 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <cassert>
 #include <stdio.h>
 
 #define ADD 0x01
