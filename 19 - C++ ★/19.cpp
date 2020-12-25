@@ -1,5 +1,4 @@
 #include <fstream>
-#include <istream>
 #include <vector>
 #include <string>
 #include <map>
