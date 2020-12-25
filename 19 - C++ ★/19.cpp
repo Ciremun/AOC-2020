@@ -88,7 +88,6 @@ bool check_rule(string &cmp, const string &rule, map<int, string> &rules)
                     }
                     else
                     {
-                        cmp = cmp_init;
                         break;
                     }
                 }
