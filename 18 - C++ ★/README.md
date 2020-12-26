@@ -3,6 +3,7 @@
 ## Dependencies
 
 C++ Compiler  
+[Python](https://www.python.org/)  
 
 ## Version
 
@@ -16,11 +17,16 @@ C++ Compiler
     Thread model: posix
     InstalledDir: C:\msys64\mingw64\bin
 
+    Python 3.9.1
+
 ## Result
 
     pt.1: 3348222486398
+    pt.2: 43423343619505
 
 ## Run
 
     g++ 18.cpp -o 18
     ./18
+
+    python 18.py
